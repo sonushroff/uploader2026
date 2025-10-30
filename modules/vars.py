@@ -4,8 +4,8 @@ import os
 from os import environ
 
 API_ID = int(environ.get("API_ID", "26271673"))
-API_HASH = environ.get("API_HASH", "7978131624:AAEjWK3BQRcegT24PuXqGto8SqLx0DiCcU8")
-BOT_TOKEN = environ.get("BOT_TOKEN", "7978131624:AAEjWK3BQRcegT24PuXqGto8SqLx0DiCcU8")
+API_HASH = environ.get("API_HASH", "0e807111856890e4770b3e5a3324ec5f")
+BOT_TOKEN = environ.get("BOT_TOKEN", "8317559239:AAF0SuuW_IDKbLcqOIHITyyNTXHKQM896MQ")
 
 OWNER = int(environ.get("OWNER", "820017857"))
 CREDIT = environ.get("CREDIT", "COURSE WALLAH")
@@ -18,5 +18,6 @@ AUTH_USER = os.environ.get('AUTH_USERS', '820017857').split(',')
 AUTH_USERS = [int(user_id) for user_id in AUTH_USER]
 if int(OWNER) not in AUTH_USERS:
     AUTH_USERS.append(int(OWNER))
+
 
 
