@@ -558,3 +558,30 @@ def register_drm_handlers(bot):
     @bot.on_message(filters.private & (filters.document | filters.text))
     async def call_drm_handler(bot: Client, m: Message):
         await drm_handler(bot, m)
+        # ================= SAFE HELPERS =================
+def extract_index(text):
+    import re
+    m = re.match(r"\s*(\d+)", text or "")
+    return int(m.group(1)) if m else None
+
+def safe_filename(name):
+    import re
+    if not name:
+        return "file"
+    name = re.sub(r'[\\/:*?"<>|]', '', name)
+    name = name.replace('[', '(').replace(']', ')')
+    name = name.replace(' ', '_')
+    return name
+
+def clean_url(url):
+    if not url:
+        return url
+    return url.split('*')[0]
+
+def is_drm_manifest(text):
+    if not text:
+        return False
+    t = text.lower()
+    return any(x in t for x in ["widevine", "playready", "fairplay", "contentprotection"])
+# ==============================================
+
